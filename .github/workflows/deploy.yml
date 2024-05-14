@@ -22,8 +22,7 @@ jobs:
 
       - name: Authenticate with gcloud
         run: |
-          gcloud auth activate-service-account --key-file=./tensile-tenure-423308-e5-0fa52aa16d6a.json
-
+          gcloud auth activate-service-account --key-file=${{ secrets.SVC_ACCOUNT }}
 
       - name: Deploy to Cloud Run
         run: |
