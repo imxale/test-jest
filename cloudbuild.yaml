@@ -15,7 +15,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [
       'run', 'deploy', 'your-service-name', '--image', 'gcr.io/tensile-tenure-423308-e5/your-image-name',
-      '--platform', 'managed', '--region', 'europe-west10', '--allow-unauthenticated'
+      '--platform', 'managed', '--region', 'us-east1', '--allow-unauthenticated'
     ]
 
 # Timeout for the entire build process
