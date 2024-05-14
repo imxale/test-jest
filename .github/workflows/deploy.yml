@@ -22,9 +22,7 @@ jobs:
 
       - name: Authenticate with gcloud
         run: |
-          echo "$SVCACCOUNT" > /tmp/keyfile.json
-          export GOOGLE_APPLICATION_CREDENTIALS="/tmp/keyfile.json"
-          gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+          gcloud auth activate-service-account --key-file=./tensile-tenure-423308-e5-0fa52aa16d6a.json
 
 
       - name: Deploy to Cloud Run
