@@ -27,7 +27,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud function deploy test-jest-axel\                       
+          gcloud functions deploy test-jest-axel\                       
           --gen2 \
           --runtime=nodejs20 \
           --region=us-east1 \
