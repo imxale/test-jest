@@ -20,6 +20,10 @@ jobs:
           service_account_key: ${{ secrets.svcaccount }}
           project_id: tensile-tenure-423308-e5
 
+      - name: Authenticate with gcloud
+        run: |
+          gcloud auth activate-service-account --key-file=${{ secrets.svcaccount }}
+
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy test-jest-axel --image gcr.io/tensile-tenure-423308-e5/YOUR_IMAGE_NAME --platform managed --region us-east1
