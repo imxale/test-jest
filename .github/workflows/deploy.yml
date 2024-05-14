@@ -27,12 +27,6 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud functions deploy testjestaxel\                       
-          --gen2 \
-          --runtime=nodejs20 \
-          --region=us-east1 \
-          --source=. \
-          --entry-point=helloGET \
-          --trigger-http
+          gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http
         env:
           GOOGLE_CLOUD_PROJECT: ${{ secrets.project_id }}
