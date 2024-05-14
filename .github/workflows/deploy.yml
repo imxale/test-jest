@@ -1,0 +1,27 @@
+name: Deploy to GCP
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          version: 'latest'
+          service_account_key: ${{ secrets.svcaccount }}
+          project_id: tensile-tenure-423308-e5
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy YOUR_SERVICE_NAME --image gcr.io/tensile-tenure-423308-e5/YOUR_IMAGE_NAME --platform managed --region us-east1 --allow-unauthenticated
+        env:
+          GOOGLE_CLOUD_PROJECT: ${{ secrets.project_id }}
