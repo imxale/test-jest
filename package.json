@@ -1,0 +1,9 @@
+{
+  "name": "jest",
+  "jest": {
+    "verbose": true
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

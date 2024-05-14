@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1715608704974" clover="3.2.0">
+  <project timestamp="1715608704974" name="All files">
+    <metrics statements="27" coveredstatements="24" conditionals="12" coveredconditionals="8" methods="4" coveredmethods="4" elements="43" coveredelements="36" complexity="0" loc="27" ncloc="27" packages="4" files="4" classes="4"/>
+    <package name="booking">
+      <metrics statements="13" coveredstatements="12" conditionals="6" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <file name="bookings.js" path="/Users/axel/Documents/dev/testingHotel/booking/bookings.js">
+        <metrics statements="13" coveredstatements="12" conditionals="6" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="41" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="47" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="hotel">
+      <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="hotels.js" path="/Users/axel/Documents/dev/testingHotel/hotel/hotels.js">
+        <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="picture">
+      <metrics statements="6" coveredstatements="5" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+      <file name="pictures.js" path="/Users/axel/Documents/dev/testingHotel/picture/pictures.js">
+        <metrics statements="6" coveredstatements="5" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="reservation">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="reservations.js" path="/Users/axel/Documents/dev/testingHotel/reservation/reservations.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
