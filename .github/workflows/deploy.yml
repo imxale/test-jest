@@ -23,6 +23,8 @@ jobs:
       - name: Authenticate with gcloud
         run: |
           gcloud auth activate-service-account --key-file=./tensile-tenure-423308-e5-0fa52aa16d6a.json
+
+      - name: Deploy Google function  
         run: |
           gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http
         env:
