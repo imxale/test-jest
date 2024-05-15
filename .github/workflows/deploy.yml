@@ -41,18 +41,16 @@ jobs:
 
       - name: Download JMeter
         run: |
-          for i in {1..5}; do
-            wget -O apache-jmeter-5.5.tgz https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz && break || sleep 15;
-          done
-          tar xf apache-jmeter-5.5.tgz
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
+          tar xf apache-jmeter-5.6.3.tgz
 
       - name: Copy custom JMeter properties
         run: |
-          cp tests/stress/jmeter.properties apache-jmeter-5.5/bin/
+          cp tests/stress/jmeter.properties apache-jmeter-5.6.3/bin/
 
       - name: Run JMeter tests
         run: |
-          apache-jmeter-5.5/bin/jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv
+          apache-jmeter-5.6.3/bin/jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv
 
       - name: Install latency-lingo-cli
         run: |
