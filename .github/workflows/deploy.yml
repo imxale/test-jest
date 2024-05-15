@@ -54,7 +54,7 @@ jobs:
 
       - name: Install latency-lingo-cli
         run: |
-          curl -L https://github.com/latency-lingo/cli/releases/latest/download/latency-lingo-cli_darwin_amd64.tar.gz \
+          curl -L https://github.com/latency-lingo/cli/releases/latest/download/latency-lingo-cli_linux_amd64.tar.gz \
            | tar -xz
 
       - name: Upload JMeter report to Lingo
