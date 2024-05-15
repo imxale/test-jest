@@ -24,6 +24,9 @@ jobs:
         run: |
           gcloud auth activate-service-account --key-file=./tensile-tenure-423308-e5-0fa52aa16d6a.json
 
+      - name: Run install
+        run: npm i
+
       - name: Run unit tests
         run: npm test
 
