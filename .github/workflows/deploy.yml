@@ -41,7 +41,9 @@ jobs:
 
       - name: Download JMeter
         run: |
-          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
+          for i in {1..5}; do
+            wget -O apache-jmeter-5.5.tgz https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz && break || sleep 15;
+          done
           tar xf apache-jmeter-5.5.tgz
 
       - name: Copy custom JMeter properties
