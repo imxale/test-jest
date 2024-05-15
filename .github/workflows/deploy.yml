@@ -43,7 +43,7 @@ jobs:
 
       - name: Run JMeter tests
         run: |
-          jmeter -n -t tests/stress/test_plan.jmx -l tests/stress/report/result.jtl -e -o tests/stress/report/
+          jmeter -n -t tests/stress/test_plan.jmx -l tests/stress/report/result.jtl -e -o tests/stress/report/ -Jjmeter.save.saveservice.output_format=csv -Jjmeter.save.saveservice.filename=tests/stress/report/result.csv
 
       - name: Install latency-lingo-cli
         run: |
