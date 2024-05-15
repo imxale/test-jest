@@ -54,9 +54,13 @@ jobs:
         run: |
           cp tests/stress/jmeter.properties apache-jmeter-5.6.3/bin/
 
+      - name: Get Identity Token
+        id: get-identity-token
+        run: echo "::set-output name=token::$(gcloud auth print-identity-token)"
+
       - name: Run JMeter tests
         run: |
-          apache-jmeter-5.6.3/bin/jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv
+          apache-jmeter-5.6.3/bin/jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv -JIDENTITY_TOKEN=${{ steps.get-identity-token.outputs.token }}
 
       - name: Install latency-lingo-cli
         run: |

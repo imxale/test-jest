@@ -7,7 +7,13 @@
             <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
             <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
             <elementProp name="TestPlan.user_defined_variables" elementType="Arguments">
-                <collectionProp name="Arguments.arguments"/>
+                <collectionProp name="Arguments.arguments">
+                    <elementProp name="IDENTITY_TOKEN" elementType="Argument">
+                        <stringProp name="Argument.name">IDENTITY_TOKEN</stringProp>
+                        <stringProp name="Argument.value">${__P(IDENTITY_TOKEN)}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                </collectionProp>
             </elementProp>
             <stringProp name="TestPlan.user_define_classpath"></stringProp>
         </TestPlan>
@@ -35,13 +41,21 @@
                     <stringProp name="HTTPSampler.port">443</stringProp>
                     <stringProp name="HTTPSampler.protocol">https</stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">/</stringProp>
+                    <stringProp name="HTTPSampler.path">/testjestaxel</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                     <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                     <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
                     <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <elementProp name="HTTPsampler.HeaderManager.headers" elementType="HeaderManager">
+                        <collectionProp name="HeaderManager.headers">
+                            <elementProp name="" elementType="Header">
+                                <stringProp name="Header.name">Authorization</stringProp>
+                                <stringProp name="Header.value">Bearer ${IDENTITY_TOKEN}</stringProp>
+                            </elementProp>
+                        </collectionProp>
+                    </elementProp>
                 </HTTPSamplerProxy>
                 <hashTree/>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /health" enabled="true">
@@ -59,6 +73,14 @@
                     <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                     <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
                     <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <elementProp name="HTTPsampler.HeaderManager.headers" elementType="HeaderManager">
+                        <collectionProp name="HeaderManager.headers">
+                            <elementProp name="" elementType="Header">
+                                <stringProp name="Header.name">Authorization</stringProp>
+                                <stringProp name="Header.value">Bearer ${IDENTITY_TOKEN}</stringProp>
+                            </elementProp>
+                        </collectionProp>
+                    </elementProp>
                 </HTTPSamplerProxy>
                 <hashTree/>
                 <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
