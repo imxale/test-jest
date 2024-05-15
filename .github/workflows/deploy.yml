@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy Google function  
         run: |
-          gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http
+          gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http --allow-unauthenticated
         env:
           GOOGLE_CLOUD_PROJECT: ${{ secrets.project_id }}
 
