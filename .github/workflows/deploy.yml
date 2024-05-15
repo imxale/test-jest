@@ -45,6 +45,10 @@ jobs:
         run: |
           jmeter -n -t tests/stress/test_plan.jmx -l tests/stress/report/result.jtl -e -o tests/stress/report/
 
-      - name: Upload JMeter report to Lingo
+      - name: Install latency-lingo-cli
         run: |
-          curl -F "file=@./tests/stress/report/index.html" -H "Authorization: Bearer 814f97a2-f518-4384-94dc-dea39bc494fc" https://api.lingo.com/upload
+          npm install -g latency-lingo-cli
+
+      - name: Publish JMeter report to Lingo
+        run: |
+          ./latency-lingo-cli publish --file ./tests/stress/report/result.jtl --label "checkout flow" --api-key 814f97a2-f518-4384-94dc-dea39bc494fc
