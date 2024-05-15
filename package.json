@@ -5,12 +5,15 @@
   },
   "scripts": {
     "test": "jest --coverage",
-    "codecov": "codecov"
+    "codecov": "codecov",
+    "jmeter": "jmeter -n -t tests/stress/test_plan.jmx -l tests/stress/report/result.jtl -e -o tests/stress/report/",
+    "upload-lingo": "curl -F \"file=@tests/stress/report/index.html\" -H \"Authorization: Bearer ${{ secrets.LINGO_API_KEY }}\" https://api.lingo.com/upload"
   },
   "devDependencies": {
     "codecov": "^3.8.3",
     "jest": "^29.7.0",
-    "mongodb-memory-server": "^9.2.0"
+    "mongodb-memory-server": "^9.2.0",
+    "supertest": "^6.2.3"
   },
   "dependencies": {
     "@google-cloud/functions-framework": "^3.4.0"
