@@ -20,16 +20,6 @@ jobs:
           service_account_key: ${{ secrets.svcaccount }}
           project_id: tensile-tenure-423308-e5
 
-      - name: Authenticate with gcloud
-        run: |
-          gcloud auth activate-service-account --key-file=./tensile-tenure-423308-e5-0fa52aa16d6a.json
-
-      - name: Deploy Google function  
-        run: |
-          gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http --allow-unauthenticated
-        env:
-          GOOGLE_CLOUD_PROJECT: ${{ secrets.project_id }}
-
       - name: Run install
         run: npm i
 
@@ -41,6 +31,16 @@ jobs:
         with:
           token: fc11a0ce-3fc8-4e47-861f-b38caef8e088
           slug: imxale/test-jest
+
+      - name: Authenticate with gcloud
+        run: |
+          gcloud auth activate-service-account --key-file=./tensile-tenure-423308-e5-0fa52aa16d6a.json
+
+      - name: Deploy Google function  
+        run: |
+          gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http --allow-unauthenticated
+        env:
+          GOOGLE_CLOUD_PROJECT: ${{ secrets.project_id }}
 
       - name: Install Java
         run: sudo apt-get install -y openjdk-8-jdk
