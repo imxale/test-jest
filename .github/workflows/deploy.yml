@@ -40,17 +40,14 @@ jobs:
         run: |
           wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xzf apache-jmeter-5.6.3.tgz
-          echo "export PATH=$(pwd)/apache-jmeter-5.6.3/bin:\$PATH" >> $GITHUB_ENV
-
-      - name: Configure JMeter Security
-        run: |
           echo "xstream.whitelist.add=org.apache.jmeter.save.ScriptWrapper" >> apache-jmeter-5.6.3/bin/jmeter.properties
+          echo "export PATH=$(pwd)/apache-jmeter-5.6.3/bin:\$PATH" >> $GITHUB_ENV
 
       - name: Run JMeter tests
         run: |
           source $GITHUB_ENV
           jmeter -n -t tests/stress/test_plan.jmx -l tests/stress/report/result.csv -Jjmeter.save.saveservice.output_format=csv
-
+        
       - name: Upload JMeter report to Lingo
         env:
           LINGO_API_KEY: 814f97a2-f518-4384-94dc-dea39bc494fc
