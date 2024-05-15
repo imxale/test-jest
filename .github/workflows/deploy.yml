@@ -36,18 +36,21 @@ jobs:
           token: fc11a0ce-3fc8-4e47-861f-b38caef8e088
           slug: imxale/test-jest
 
-      - name: Install JMeter
+      - name: Install Java
+        run: sudo apt-get install -y openjdk-8-jdk
+
+      - name: Download JMeter
         run: |
-          sudo apt-get update
-          sudo apt-get install -y jmeter
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
+          tar xf apache-jmeter-5.5.tgz
 
       - name: Copy custom JMeter properties
         run: |
-          sudo cp tests/stress/jmeter.properties /usr/share/jmeter/bin/
+          cp tests/stress/jmeter.properties apache-jmeter-5.5/bin/
 
       - name: Run JMeter tests
         run: |
-          jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv
+          apache-jmeter-5.5/bin/jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv
 
       - name: Install latency-lingo-cli
         run: |
