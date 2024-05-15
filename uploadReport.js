@@ -5,7 +5,7 @@ const path = require('path');
 
 async function uploadReport() {
     const form = new FormData();
-    const filePath = path.resolve('./tests/stress/report/result.jtl');
+    const filePath = './tests/stress/report/result.jtl';
     form.append('file', fs.createReadStream(filePath));
 
     try {
