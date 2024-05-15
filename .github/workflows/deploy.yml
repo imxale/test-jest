@@ -41,10 +41,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jmeter
 
-      - name: Copy custom JMeter properties
-        run: |
-          cp tests/stress/jmeter.properties /etc/jmeter/
-
       - name: Run JMeter tests
         run: |
           jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv
