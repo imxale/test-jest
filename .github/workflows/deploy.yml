@@ -36,18 +36,20 @@ jobs:
           token: fc11a0ce-3fc8-4e47-861f-b38caef8e088
           slug: imxale/test-jest
 
-      - name: Install JMeter 5.6.3
+      - name: Install JMeter
         run: |
-          wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
-          tar -xzf apache-jmeter-5.6.3.tgz
-          echo "xstream.whitelist.add=org.apache.jmeter.save.ScriptWrapper" >> apache-jmeter-5.6.3/bin/jmeter.properties
-          echo "export PATH=$(pwd)/apache-jmeter-5.6.3/bin:\$PATH" >> $GITHUB_ENV
-
+          sudo apt-get update
+          sudo apt-get install -y jmeter
+            
       - name: Run JMeter tests
         run: |
-          source $GITHUB_ENV
           jmeter -n -t tests/stress/test_plan.jmx -l tests/stress/report/result.csv -Jjmeter.save.saveservice.output_format=csv
-        
+
+      - name: Install latency-lingo-cli
+        run: |
+          curl -L https://github.com/latency-lingo/cli/releases/latest/download/latency-lingo-cli_darwin_amd64.tar.gz \
+           | tar -xz
+
       - name: Upload JMeter report to Lingo
         env:
           LINGO_API_KEY: 814f97a2-f518-4384-94dc-dea39bc494fc
