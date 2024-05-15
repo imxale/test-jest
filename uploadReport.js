@@ -5,7 +5,7 @@ const path = require('path');
 
 async function uploadReport() {
     const form = new FormData();
-    const filePath = './tests/stress/report/result.csv';
+    const filePath = './test_results.csv';
     form.append('file', fs.createReadStream(filePath));
 
     try {
