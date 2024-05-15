@@ -58,6 +58,4 @@ jobs:
            | tar -xz
 
       - name: Upload JMeter report to Lingo
-        env:
-          LINGO_API_KEY: 814f97a2-f518-4384-94dc-dea39bc494fc
-        run: node uploadReport.js
+        run: ./latency-lingo-cli publish --file ./test_results.csv --label "checkout flow" --api-key 814f97a2-f518-4384-94dc-dea39bc494fc
