@@ -40,7 +40,7 @@ jobs:
         run: |
           wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xzf apache-jmeter-5.6.3.tgz
-          export PATH=$PATH:$(pwd)/apache-jmeter-5.6.3/bin
+          echo "export PATH=$(pwd)/apache-jmeter-5.6.3/bin:\$PATH" >> $GITHUB_ENV
 
       - name: Configure JMeter Security
         run: |
@@ -48,12 +48,8 @@ jobs:
 
       - name: Run JMeter tests
         run: |
+          source $GITHUB_ENV
           jmeter -n -t tests/stress/test_plan.jmx -l tests/stress/report/result.csv -Jjmeter.save.saveservice.output_format=csv
-
-      - name: Install latency-lingo-cli
-        run: |
-          curl -L https://github.com/latency-lingo/cli/releases/latest/download/latency-lingo-cli_darwin_amd64.tar.gz \
-           | tar -xz
 
       - name: Upload JMeter report to Lingo
         env:
