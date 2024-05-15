@@ -3,8 +3,14 @@
   "jest": {
     "verbose": true
   },
+  "scripts": {
+    "test": "jest --coverage",
+    "codecov": "codecov"
+  },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "codecov": "^3.8.3",
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.2.0"
   },
   "dependencies": {
     "@google-cloud/functions-framework": "^3.4.0"

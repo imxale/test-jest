@@ -24,8 +24,23 @@ jobs:
         run: |
           gcloud auth activate-service-account --key-file=./tensile-tenure-423308-e5-0fa52aa16d6a.json
 
-      - name: Deploy to Cloud Run
+      - name: Run unit tests
+        run: npm test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Install JMeter
         run: |
-          gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http
-        env:
-          GOOGLE_CLOUD_PROJECT: ${{ secrets.project_id }}
+          sudo apt-get update
+          sudo apt-get install -y jmeter
+
+      - name: Run JMeter tests
+        run: |
+          jmeter -n -t tests/stress/test_plan.jmx -l tests/stress/report/result.jtl -e -o tests/stress/report/
+
+      - name: Upload JMeter report to Lingo
+        run: |
+          curl -F "file=@tests/stress/report/index.html" -H "Authorization: Bearer ${{ secrets.LINGO_API_KEY }}" https://api.lingo.com/upload
