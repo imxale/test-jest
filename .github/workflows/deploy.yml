@@ -31,7 +31,7 @@ jobs:
         run: npm test
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4.0.1
         with:
           token: fc11a0ce-3fc8-4e47-861f-b38caef8e088
           slug: imxale/test-jest
