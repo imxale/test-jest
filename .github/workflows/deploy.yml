@@ -33,7 +33,7 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: fc11a0ce-3fc8-4e47-861f-b38caef8e088
           slug: imxale/test-jest
 
       - name: Install JMeter
@@ -47,4 +47,4 @@ jobs:
 
       - name: Upload JMeter report to Lingo
         run: |
-          curl -F "file=@./tests/stress/report/index.html" -H "Authorization: Bearer ${{ secrets.LINGO_API_KEY }}" https://api.lingo.com/upload
+          curl -F "file=@./tests/stress/report/index.html" -H "Authorization: Bearer 814f97a2-f518-4384-94dc-dea39bc494fc" https://api.lingo.com/upload
