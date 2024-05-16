@@ -33,7 +33,7 @@
                 <stringProp name="ThreadGroup.delay"></stringProp>
             </ThreadGroup>
             <hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /" enabled="true">
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /testjestaxel" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                         <collectionProp name="Arguments.arguments"/>
                     </elementProp>
