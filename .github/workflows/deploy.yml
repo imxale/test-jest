@@ -38,7 +38,7 @@ jobs:
 
       - name: Deploy Google function  
         run: |
-          gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http --allow-unauthenticated
+          gcloud functions deploy testjestaxel --gen2 --runtime=nodejs20 --region=us-east1 --source=. --entry-point=helloGET --trigger-http
         env:
           GOOGLE_CLOUD_PROJECT: ${{ secrets.project_id }}
 
@@ -56,11 +56,12 @@ jobs:
 
       - name: Get Identity Token
         id: get-identity-token
-        run: echo "::set-output name=token::$(gcloud auth print-identity-token)"
+        run: |
+          echo "IDENTITY_TOKEN=$(gcloud auth print-identity-token)" >> $GITHUB_ENV
 
       - name: Run JMeter tests
         run: |
-          apache-jmeter-5.6.3/bin/jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv -JIDENTITY_TOKEN=${{ steps.get-identity-token.outputs.token }}
+          apache-jmeter-5.6.3/bin/jmeter -n -t tests/stress/test_plan.jmx -l test_results.csv -JIDENTITY_TOKEN=${{ env.IDENTITY_TOKEN }}
 
       - name: Install latency-lingo-cli
         run: |
