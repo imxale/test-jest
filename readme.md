@@ -102,12 +102,25 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6ImEzYjc2MmY4NzFjZGIzYmFlMDA0NGM2NDk2MjJmYzEzOTZlZGEz
 
 ## Codecov
 Le rapport de couverture de code est envoyé à Codecov à l'aide de l'action codecov/codecov-action@v4.0.1.
+![Codecov](codedev.png)
 
 ## JMeter
 Les tests de performance sont effectués à l'aide de JMeter. Les résultats sont stockés dans un fichier CSV.
-![Exemple de fichier CSV](test_results.csv)
 
-![Codecov](codedev.png)
+```csv
+| timeStamp     | elapsed | label       | responseCode | responseMessage | threadName         | dataType | success | failureMessage | bytes | sentBytes | grpThreads | allThreads | URL                                                                              | Latency | IdleTime | Connect |
+|---------------|---------|-------------|--------------|-----------------|--------------------|----------|---------|----------------|-------|-----------|------------|------------|----------------------------------------------------------------------------------|---------|----------|---------|
+| 1715845663123 | 553     | GET /       | 200          | OK              | Thread Group 1-6   | text     | true    |                | 331   | 166       | 11         | 11         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel        | 549     | 0        | 291     |
+| 1715845662667 | 1008    | GET /       | 200          | OK              | Thread Group 1-1   | text     | true    |                | 331   | 166       | 11         | 11         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel        | 1004    | 0        | 747     |
+| 1715845662820 | 856     | GET /       | 200          | OK              | Thread Group 1-3   | text     | true    |                | 331   | 166       | 11         | 11         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel        | 852     | 0        | 594     |
+| 1715845662724 | 952     | GET /       | 200          | OK              | Thread Group 1-2   | text     | true    |                | 331   | 166       | 11         | 11         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel        | 948     | 0        | 690     |
+| 1715845662924 | 752     | GET /       | 200          | OK              | Thread Group 1-4   | text     | true    |                | 335   | 166       | 11         | 11         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel        | 748     | 0        | 490     |
+| 1715845663026 | 650     | GET /       | 200          | OK              | Thread Group 1-5   | text     | true    |                | 331   | 166       | 11         | 11         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel        | 646     | 0        | 388     |
+| 1715845663677 | 145     | GET /health | 204          | No Content      | Thread Group 1-5   | text     | true    |                | 270   | 173       | 13         | 13         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel/health | 0       | 0        | 0       |
+| 1715845663677 | 145     | GET /health | 204          | No Content      | Thread Group 1-6   | text     | true    |                | 270   | 173       | 13         | 13         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel/health | 0       | 0        | 0       |
+| 1715845663677 | 145     | GET /health | 204          | No Content      | Thread Group 1-4   | text     | true    |                | 270   | 173       | 13         | 13         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel/health | 0       | 0        | 0       |
+| 1715845663677 | 145     | GET /health | 204          | No Content      | Thread Group 1-1   | text     | true    |                | 270   | 173       | 13         | 13         | https://us-east1-tensile-tenure-423308-e5.cloudfunctions.net/testjestaxel/health | 0       | 0        | 0       |
+```
 
 ## Lingo
 Le rapport de performance de JMeter est envoyé à Lingo à l'aide de l'action latency-lingo/cli.
